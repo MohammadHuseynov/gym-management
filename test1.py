@@ -37,7 +37,7 @@ for i in range(len(ls_usernames)):
             is_validation_card = user.validate(*task)
             pay_validation(is_validation_card)
         else:
-            print(ls_usernames[i], "tarikhe kart shoma tamom shodeh")
+            print("tarikhe kart shoma tamom shodeh")
 with open(f"{os.getcwd()}//this_test_transation.txt", "a", encoding="utf-8") as file:
     for i in ls_transactons:
         result = "|".join(str(x) for x in i)
