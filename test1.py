@@ -8,13 +8,11 @@ ls_tozihat = ["this for first deposit", "my balance refound", "refound"] # tozih
 ls_usernames = ["amin", "abas", "yosef"]
 ls_random_for_user = [45000, 37000, 125000]
 ls_bank_balance = ['10000000', '50000', '2500000']
-# print(ls_bank_balance)
 
 def pay_validation(is_validate_card):
     if is_validate_card:
         if (ls_random_for_user[i] > 0) and (ls_random_for_user[i] <= int(ls_bank_balance[i])):
             tracking_numberper = user.pay(*ls_test_card[i], ls_random_for_user[i]) # deposit chon toy bakhsh sharzh kifpol hastim
-            # ls_bank_balance[ls_bank_balance.index(ls_bank_balance[i])] -= int(ls_bank_balance[i]) - ls_random_for_user[i]
             ls_bank_balance[i] = int(ls_bank_balance[i]) - ls_random_for_user[i]
             user.balance += int(ls_random_for_user[i])
             ls_transactons.append((ls_usernames[i],"deposit", user.balance, "/".join(day_now), ls_tozihat[i] if ls_tozihat[i] != "" else "None", tracking_numberper, "success")) # sucess chon inja dige sharzh anjam shode
@@ -26,7 +24,6 @@ def pay_validation(is_validate_card):
 ls_transactons = []
 for i in range(len(ls_usernames)):
     user = ls_usernames[i]
-    # user._name = str(ls_usernames[i])
     user = API() # baraye test hst vali dar asl in user az gharl hast toy oop chon toy bkhsh afzodan karbar karbar mishe object (farz man)
     user.balance = 0 # baraye test hst vali dar asl in mored az gharl hast chon toy bkhsh afzodan karbar attribute sapt shode
     task = tuple(ls_test_card[i])
@@ -39,7 +36,6 @@ for i in range(len(ls_usernames)):
         if task[1] >= int(day_now[1]):
             is_validation_card = user.validate(*task)
             pay_validation(is_validation_card)
-            # func validation
         else:
             print(ls_usernames[i], "tarikhe kart shoma tamom shodeh")
 with open(f"{os.getcwd()}//this_test_transation.txt", "a", encoding="utf-8") as file:
@@ -49,7 +45,6 @@ with open(f"{os.getcwd()}//this_test_transation.txt", "a", encoding="utf-8") as 
         file.write("\n")
 
 
-# print(ls_bank_balance)
 for i in ls_transactons:
     print(i)
 
