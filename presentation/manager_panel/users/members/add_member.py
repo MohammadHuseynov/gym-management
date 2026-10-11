@@ -1,0 +1,1 @@
+#here calls the services in the services folder you should make a function which adds a member and pass it to the infrastructure to save it in data folder
