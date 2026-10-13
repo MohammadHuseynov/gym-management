@@ -1,1 +1,11 @@
-#here calls the services in the services folder you should make a function which adds a member and pass it to the infrastructure to save it in data folder
+from model.user import User
+
+userClass = User
+
+def add_member():
+    #these must be in service logic not in presentation layer:
+    userClass.name = input("Enter members name: ")
+    userClass.username = input("Enter member username: ")
+    userClass.password = input("Enter member user password: ")
+    userClass.email = input("Enter user email: ")
+    userClass.is_active = input("Enter user status (Active\Deactive): ")

@@ -1,10 +1,13 @@
-import main_menu 
+from presentation import main_menu
+from presentation.trainer_panel.workout_plans import workout_plan 
+from presentation.trainer_panel.view_courses import view_course
 
 def trainer_menu():
 
-    print("1.view courses")
-    print("2.manage member workout plan")
-    print("3.Exit")
+    print('-' * 8)
+    print("1.View courses")
+    print("2.Manage member workout plan")
+    print("3.Return")
 
     while True:
         try:
@@ -15,9 +18,10 @@ def trainer_menu():
             continue
 
         if trainer_choice == 1:
-            print("goes to view courses")
+            view_course()
+
         elif trainer_choice == 2:
-            print("goes to manage member work out plan page")
+            workout_plan()
 
         elif trainer_choice == 3:
             return main_menu.main_menu()

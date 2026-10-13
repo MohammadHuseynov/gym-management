@@ -1,14 +1,16 @@
-import main_menu
-from users import manage_users_menu
-
+from presentation.manager_panel.users.manager_users_menu import manager_users
+from presentation.manager_panel.halls.manager_halls import manage_halls
+from presentation.manager_panel.courses.manager_courses import manage_courses
+from presentation.manager_panel.reports.manager_reports import manage_report
 
 def manager_menu():  
+
+    print('-' * 8)
     print("1.Managing Users")
     print("2.Managing Halls")
     print("3.Managing Courses")
     print("4.Managing Subscriptions")
     print("5.View Reports")
-    print("6.Return")
 
 
     while True:
@@ -19,19 +21,18 @@ def manager_menu():
             continue
         
         if manager_choice == 1:
-            manage_users_menu.manage_users_manu()
+            manager_users()
 
         elif manager_choice == 2:
-            print("go to the halls folder and show manager what he want to do")
+            manage_halls()
 
         elif manager_choice == 3:
-            print("go to the courses folder and show manager what he want to do")
+            manage_courses()
 
         elif manager_choice == 4:
-            print("go to the subscriptions folder and show manager what he want to do")
+            print("**SUBSCRIPTION MUST BE ADDED**")
 
         elif manager_choice == 5:
-            print("go to the reports folder and show manager what he want to do")
+            manage_report()
 
-        elif manager_choice == 6:
-            return main_menu.main_menu()
+        
