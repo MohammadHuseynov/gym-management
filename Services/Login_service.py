@@ -17,7 +17,7 @@ def login_menu_presentation(all_users):
             user = handle_login(all_users, expected_role="Admin")
             if user:
                 # TODO: Redirect to Admin Panel (Section 2)
-                print(f"\n✅ Welcome to Admin Panel, {user.name}!")
+                print(f"\nWelcome to Admin Panel, {user.name}!")
                 # admin_panel(user) will be called here later
                 input("\nPress Enter to return to main menu...")
 
@@ -25,7 +25,7 @@ def login_menu_presentation(all_users):
             user = handle_login(all_users, expected_role="Trainer")
             if user:
                 # TODO: Redirect to Trainer Panel (Section 3)
-                print(f"\n✅ Welcome to Trainer Panel, {user.name}!")
+                print(f"\nWelcome to Trainer Panel, {user.name}!")
                 # trainer_panel(user) will be called here later
                 input("\nPress Enter to return to main menu...")
 
@@ -33,7 +33,7 @@ def login_menu_presentation(all_users):
             user = handle_login(all_users, expected_role="Member")
             if user:
                 # TODO: Redirect to Member Panel (Section 4)
-                print(f"\n✅ Welcome to Member Panel, {user.name}!")
+                print(f"\nWelcome to Member Panel, {user.name}!")
                 # member_panel(user) will be called here later
                 input("\nPress Enter to return to main menu...")
 
