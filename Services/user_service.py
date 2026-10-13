@@ -1,4 +1,5 @@
 from model.user import User
+from auth_service import *
 
 
 def add_member():
