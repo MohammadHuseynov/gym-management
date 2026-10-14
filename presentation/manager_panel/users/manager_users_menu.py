@@ -1,6 +1,7 @@
 from presentation.manager_panel.users.manager_add_user import manage_add_user
 from presentation.manager_panel.users.manager_edit_user import manage_edit_user
 from presentation.manager_panel.users.manager_change_user_status import manage_change_status
+from presentation.manager_panel.users.view_users import view_users
 
 def manager_users():
     print('-' * 8)
@@ -24,8 +25,7 @@ def manager_users():
         manage_change_status()
 
     elif users_choice == 4:
-        # view_users()
-        pass
+        view_users()
 
 
 

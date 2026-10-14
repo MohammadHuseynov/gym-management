@@ -15,7 +15,8 @@ def validate_email(email):
 
 def get_user_status():
     while True:
-        print("\nSelect account status:")
+        print("-" * 8)
+        print("Select account status:")
         print("1.Active")
         print("2.Inactive")
 

@@ -6,12 +6,14 @@ from presentation.manager_panel.users.trainers.add_trainer import add_trainer
 def manage_add_user():
     user_repository = UserRepository()
 
-    print("-" * 8)
-    print("1.Add Member")
-    print("2.Add Trainer")
-    print("3.Return")
-
+    
     while True:
+        print("-" * 8)
+        print("1.Add Member")
+        print("2.Add Trainer")
+        print("3.Return")
+
+        
         try:
             users_choice = int(input("Which kind of user do you want to add? (1-2): "))
         except ValueError:

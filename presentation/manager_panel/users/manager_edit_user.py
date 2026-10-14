@@ -13,7 +13,7 @@ def manage_edit_user():
 
     while True:
         try:
-            users_choice = int(input("Which Kind Of User Want To Add: (1-2) "))
+            users_choice = int(input("Which Kind Of User Want To Edit: (1-2) "))
         except:
             raise ValueError("please enter number choice")
 

@@ -1,19 +1,11 @@
-from pathlib import Path
-
-
 class UserRepository:
     def __init__(self, file_path="data/users_data.txt"):
-        self.file_path = Path(file_path)
-        self.file_path.parent.mkdir(parents=True, exist_ok=True)
-        self.file_path.touch(exist_ok=True)
+        self.file_path = file_path
 
 #region ADD
     def add(self, user):
         with open(self.file_path, "a", encoding="utf-8") as file:
-            file.write(
-                f"{user.name}|{user.username}|{user.password}|"
-                f"{user.email}|{user.role}|{user.is_active}\n"
-            )
+            file.write(f"{user.name}|{user.username}|{user.password}|"f"{user.email}|{user.role}|{user.is_active}\n")
 #endregion
 
 #region UPDATE
