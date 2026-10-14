@@ -8,11 +8,13 @@ class User:
         self.is_active = is_active
 
 class Manager(User):
-    pass
+    def __init__(self, name, username, password, email, role, is_active=True):
+        super().__init__(name, username, password, email, role, is_active)
 
 
 class Trainer(User):
-    pass
+    def __init__(self, name, username, password, email, role, is_active=True):
+        super().__init__(name, username, password, email, role, is_active)
 
 
 class Member(User):
