@@ -11,6 +11,7 @@ def manager_menu():
     print("3.Managing Courses")
     print("4.Managing Subscriptions")
     print("5.View Reports")
+    print("6.Return")
 
 
     while True:
@@ -34,5 +35,8 @@ def manager_menu():
 
         elif manager_choice == 5:
             manage_report()
+
+        elif manager_choice == 6:
+            return
 
         
