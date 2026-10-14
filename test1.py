@@ -1,26 +1,27 @@
 import jdatetime # get jalali Date time
 import os
-from random import randint
+# from random import randint
 from Bank import *
 day_now_now = str(jdatetime.date.today()).split("-")
-
+api_bank = API()
 
 int_vorodi_pol_user = input("meghdar sharzh: ")
-user_name = API() #?? user for test -> montazer code bachehaaa
+# user_name = API() #?? user for test -> montazer code bachehaaa
+# user_name = user["username"]
 
 inp_card = input("enter id card: ")
 inp_exp_month = input("enter exp month: ")
 inp_exp_year = input("enter inp exp year: ")
 inp_cvv2 = input("enter code cvv2 card: ")
 inp_password = input("enter password: ")
-user_name.information_card_user = (inp_card, inp_exp_month, inp_exp_year, inp_password, inp_cvv2)# barayee eteebar sanjiiii
-
+user["information_card_user"] = (inp_card, inp_exp_month, inp_exp_year, inp_password, inp_cvv2)# barayee eteebar sanjiiii
 
 def translation_saved(x):
     with open(f"{os.getcwd()}//this_test_transation.txt", "a", encoding="utf-8") as file:
         result = "|".join(str(i) for i in x) # masalan barayee vorodi poool karbar choon int hastand barayeh sapt str mishe chooon join str mipazirad int khata midahad
         file.write(result)
         file.write("\n")
+
 
 
 def validation_card(tup_information, day_now): # while toy bakhsh eshterak
@@ -33,11 +34,11 @@ def validation_card(tup_information, day_now): # while toy bakhsh eshterak
             print('error kart namotabar ast tarikh cart khod ra check konid')
             return False
         elif (year_card_user > year_now):
-            is_validation_card = user_name.validate(tup_information[0], month_card_user, year_card_user,tup_information[3], tup_information[4])
+            is_validation_card = api_bank.validate(tup_information[0], month_card_user, year_card_user,tup_information[3], tup_information[4])
             return is_validation_card
         else:
             if month_card_user >= month_now:
-                is_validation_card = user_name.validate(tup_information[0], month_card_user, year_card_user,tup_information[3], tup_information[4])
+                is_validation_card = api_bank.validate(tup_information[0], month_card_user, year_card_user,tup_information[3], tup_information[4])
                 return is_validation_card
             else:
                 print("mahhe kart shoma motabar nist")
@@ -57,14 +58,15 @@ def deposit(is_veealidate_card, int_vorodi_pol):
     elif (int_vorodi_pol.isdigit() == True) and (is_veealidate_card==True):
         test_inp_uesr = int(int_vorodi_pol)
         if (test_inp_uesr > 0):
-            month_card_user = int(user_name.information_card_user[1])
-            year_card_user = int(user_name.information_card_user[2])
-            t = (user_name.information_card_user[0], month_card_user, year_card_user, user_name.information_card_user[3], user_name.information_card_user[4])
-            tracking_number = user_name.pay(*t, test_inp_uesr)
-            user_name.balance += test_inp_uesr
+            month_card_user = int(user["information_card_user"][1])
+            year_card_user = int(user["information_card_user"][2])
+            t = (user["information_card_user"][0], month_card_user, year_card_user, user["information_card_user"][3], user["information_card_user"][4])
+            tracking_number = api_bank.pay(*t, test_inp_uesr)
+            user["user_balance"] += test_inp_uesr
             tozih = input(f"if you don't want to write anything, just press enter\ntransaction explanation text: ")
             time_now = jdatetime.datetime.now()
-            trx_deposit = (user_name, "deposit", test_inp_uesr, time_now.strftime("%Y/%m/%d %H:%M:%S"), tozih if tozih != "" else "None", tracking_number, "success") # user_name.name   masaaaalan
+            # uesr["username"]  choone yekta hast va barayeh pida kardan trakonesh haaa bahash kar darim choon bar asasesh trakonesh hashoo piidaaa mikonim
+            trx_deposit = (user["username"], "deposit", test_inp_uesr, time_now.strftime("%Y/%m/%d %H:%M:%S"), tozih if tozih != "" else "None", tracking_number, "success") # user_name.name   masaaaalan
             translation_saved(trx_deposit)
             return True
         else:
@@ -72,14 +74,16 @@ def deposit(is_veealidate_card, int_vorodi_pol):
             return False
 
 
+
 def new_pay(price_subscription):
-    if user_name.balance >= price_subscription:
-        user_name.balance -= price_subscription
+    if user["user_balance"] >= price_subscription:
+        user["user_balance"] -= price_subscription
         print("purchase success")
         return True # chooon bayad eshterak karabr active beshe
     else:
         print("mojodi shoma nakaafi")
         return False
+
 
 
 def get_end_time(start_time, months):
