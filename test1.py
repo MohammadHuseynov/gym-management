@@ -5,9 +5,6 @@ from Bank import *
 day_now_now = str(jdatetime.date.today()).split("-")
 
 
-
-ls_enter_transactons = []
-
 int_vorodi_pol_user = input("meghdar sharzh: ")
 user_name = API() #?? user for test -> montazer code bachehaaa
 
@@ -17,6 +14,14 @@ inp_exp_year = input("enter inp exp year: ")
 inp_cvv2 = input("enter code cvv2 card: ")
 inp_password = input("enter password: ")
 user_name.information_card_user = (inp_card, inp_exp_month, inp_exp_year, inp_password, inp_cvv2)# barayee eteebar sanjiiii
+
+
+def translation_saved(x):
+    with open(f"{os.getcwd()}//this_test_transation.txt", "a", encoding="utf-8") as file:
+        result = "|".join(str(i) for i in x) # masalan barayee vorodi poool karbar choon int hastand barayeh sapt str mishe chooon join str mipazirad int khata midahad
+        file.write(result)
+        file.write("\n")
+
 
 def validation_card(tup_information, day_now): # while toy bakhsh eshterak
     if (day_now[0].isdigit() == True) and (day_now[1].isdigit() == True) and (tup_information[1].isdigit() == True) and (tup_information[2].isdigit() == True):
@@ -41,7 +46,7 @@ def validation_card(tup_information, day_now): # while toy bakhsh eshterak
         print("vorodi bayad adade sahih bashad") 
         return False
 
-# is_veealidate_card
+
 def deposit(is_veealidate_card, int_vorodi_pol):
     if int_vorodi_pol == "":
         return("mablagh khali ghbel ghbool nist")
@@ -58,29 +63,23 @@ def deposit(is_veealidate_card, int_vorodi_pol):
             tracking_number = user_name.pay(*t, test_inp_uesr)
             user_name.balance += test_inp_uesr
             tozih = input(f"if you don't want to write anything, just press enter\ntransaction explanation text: ")
-            time_now = jdatetime.datetime.now().strftime("%Y/%m/%d %H:%M:%S")
-            trx_deposit = (user_name, "deposit", test_inp_uesr, time_now, tozih if tozih != "" else "None", tracking_number, "success") # user_name.name   masaaaalan
-            ls_enter_transactons.append(trx_deposit)
+            time_now = jdatetime.datetime.now()
+            trx_deposit = (user_name, "deposit", test_inp_uesr, time_now.strftime("%Y/%m/%d %H:%M:%S"), tozih if tozih != "" else "None", tracking_number, "success") # user_name.name   masaaaalan
+            translation_saved(trx_deposit)
             return True
         else:
             print("adad bayad yek adad sahiih va mosbat bashad")
             return False
 
+
 def new_pay(price_subscription):
     if user_name.balance >= price_subscription:
         user_name.balance -= price_subscription
-        tozih = input(f"if you don't want to write anything, just press enter\ntransaction explanation text: ")
-        time_now = jdatetime.datetime.now()
-        new_pay_trx = (user_name, "buy subscription", price_subscription, time_now.strftime("%Y/%m/%d %H:%M:%S"), tozih if tozih != "" else "None", user_name.generate_payment_id(price_subscription, user_name.information_card_user[0]), "success")
-        ls_enter_transactons.append(new_pay_trx)
+        print("purchase success")
         return True # chooon bayad eshterak karabr active beshe
     else:
         print("mojodi shoma nakaafi")
-        time_now = jdatetime.datetime.now()
-        new_pay_trx = (user_name, "buy subscription", price_subscription, time_now.strftime("%Y/%m/%d %H:%M:%S"), "Insufficient funds", user_name.generate_payment_id(price_subscription, user_name.information_card_user[0]), "failed")
-        ls_enter_transactons.append(new_pay_trx)
         return False
-
 
 
 def get_end_time(start_time, months):
@@ -95,8 +94,3 @@ def get_end_time(start_time, months):
     return end_time
 
 
-with open(f"{os.getcwd()}//this_test_transation.txt", "a", encoding="utf-8") as file:
-    for i in ls_enter_transactons:
-        result = "|".join(str(x) for x in i)
-        file.write(result)
-        file.write("\n")
