@@ -1,0 +1,9 @@
+def manage_subscription():
+
+
+    while True:
+        print("-" * 8)
+        print("1.Subscription Registration")
+        print("2.View Payments")
+        print("3.View Subscription Status")
+        print("4.Return")

@@ -5,7 +5,7 @@ from infrastructure.user_repository import UserRepository
 
 user_repository = UserRepository()
 
-def manage_edit_user():
+def manage_edit_user(user_repository):
     
     print('-' * 8)
     print("1.Edit Member")
@@ -13,7 +13,7 @@ def manage_edit_user():
 
     while True:
         try:
-            users_choice = int(input("Which Kind Of User Want To Edit: (1-2) "))
+            users_choice = int(input("Which Kind Of User Want To Edit (1-2):  "))
         except:
             raise ValueError("please enter number choice")
 

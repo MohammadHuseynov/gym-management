@@ -14,9 +14,9 @@ def handle_login(user_repository, expected_role):
         print("Incorrect username or password.")
         return None
 
-    username = input("Enter username (or B to go back): ").strip()
+    username = input("Enter username (or 1 to go back): ").strip()
 
-    if username.lower() == "b":
+    if username.lower() == "1":
         return None
 
     password = input("Enter password: ")

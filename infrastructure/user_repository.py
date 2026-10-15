@@ -5,7 +5,7 @@ class UserRepository:
 #region ADD
     def add(self, user):
         with open(self.file_path, "a", encoding="utf-8") as file:
-            file.write(f"{user.name}|{user.username}|{user.password}|"f"{user.email}|{user.role}|{user.is_active}\n")
+            file.write(f"{user.name}|{user.username}|{user.password}|{user.email}|{user.role}|{user.is_active}\n")
 #endregion
 
 #region UPDATE
