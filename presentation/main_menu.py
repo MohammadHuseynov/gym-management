@@ -5,12 +5,17 @@ from services.users.login_user import handle_login
 from infrastructure.user_repository import UserRepository
 from infrastructure.hall_repository import HallRepository
 from infrastructure.course_repository import CourseRepository
+from model.user import Member
+from model.user import Trainer
 
 
 def main_menu():
     user_repository = UserRepository()
     hall_repository = HallRepository()
     course_repository = CourseRepository()
+
+    member = Member()
+    trainer = Trainer()
 
     while True:
         print("-" * 8)
@@ -41,6 +46,6 @@ def main_menu():
         if role == "manager":
             manager_menu(user_repository, hall_repository, course_repository)
         elif role == "trainer":
-            trainer_menu(user_repository, hall_repository, course_repository)
+            trainer_menu(trainer, course_repository)
         elif role == "member":
-            member_menu(user_repository, hall_repository, course_repository)
+            member_menu(member, user_repository, hall_repository, course_repository)

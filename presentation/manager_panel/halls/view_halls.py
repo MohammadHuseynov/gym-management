@@ -5,7 +5,7 @@ def view_halls(hall_repository):
     halls = get_halls(hall_repository)
 
     if not halls:
-        print("\nNo halls found.")
+        print("No halls found.")
         return
 
     print("-" * 8)

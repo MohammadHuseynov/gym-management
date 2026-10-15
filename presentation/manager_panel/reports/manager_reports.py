@@ -11,6 +11,7 @@ def manage_report(user_repository, course_repository):
         print("2.Active Trainer Count Report")
         print("3.Active Courses Count Report")
         print("4.Full Income Report")
+        print("5.Return")
     
      
         user_choice = input("which action you want to do? ")
@@ -27,6 +28,9 @@ def manage_report(user_repository, course_repository):
     
         elif user_choice == "4":
             income_report()
+
+        elif user_choice == "5":
+            return
     
         else:
             print("please enter valid number choice (1-4)")

@@ -8,7 +8,7 @@ class Exercise:
 
 
 class WorkoutPlan:
-    def __init__(self, member, group_class):
+    def __init__(self, member, course):
         self.member = member
-        self.group_class = group_class
+        self.course = course
         self.exercises = []

@@ -3,9 +3,7 @@ from services.halls.change_hall_status import change_hall_status
 
 
 def activate_hall(hall_repository):
-    name = input(
-        "Enter the hall name to activate (or 1 to go back): "
-    ).strip()
+    name = input("Enter the hall name to activate (or 1 to go back): ").strip()
 
     if name == "1":
         return

@@ -12,10 +12,7 @@ def add_user(user, user_repository):
         raise ValueError("Username already exists.")
 
     if not validate_password(user.password):
-        raise ValueError(
-            "Password must contain an English letter, "
-            "a number, and either @ or &."
-        )
+        raise ValueError("Password must contain an English letter, a number, and either @ or &.")
 
     if not validate_email(user.email):
         raise ValueError("Email is not valid.")
