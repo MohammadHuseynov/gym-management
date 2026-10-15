@@ -1,4 +1,4 @@
-class GroupClass:
+class Course:
     def __init__(self, title, sport_type, trainer, hall, day, time, capacity, is_active=True):
         self.title = title
         self.sport_type = sport_type

@@ -22,7 +22,7 @@ def add_trainer(user_repository):
         if validate_email(email):
             break
 
-    print("Invalid email. Please try again.")
+        print("Invalid email. Please try again.")
 
     is_active = get_user_status()
 

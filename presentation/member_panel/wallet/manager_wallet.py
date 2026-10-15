@@ -1,7 +1,6 @@
 from presentation.member_panel.wallet.view_balance import view_balance
 # from presentation.member_panel.wallet.deposit_wallet import deposit_wallet
 from presentation.member_panel.wallet.view_transactions import view_transaction
-
 from presentation.member_panel.wallet.pay_renew_subscription import pay_renew_subscription
 
 
@@ -23,7 +22,7 @@ def manage_wallet():
         view_balance()
 
     elif user_choice == 2:
-        # deposit_wallet()
+        #deposit_wallet()
         pass
     
     elif user_choice == 3:

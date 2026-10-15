@@ -1,10 +1,13 @@
 
 from services.users.edit_user import edit_user
-from services.validations.validation import (validate_email, validate_password)
+from services.validations.validation import (validate_email,validate_password,get_user_status)
 
 
 def edit_trainer(user_repository):
-    old_username = input("Enter the username of the trainer to edit: ").strip()
+    old_username = input("Enter the username of the trainer to edit (or 1 to go back): ").strip()
+
+    if old_username.lower() == "1":
+        return False
 
     users = user_repository.get_all()
 
@@ -41,9 +44,7 @@ def edit_trainer(user_repository):
         if validate_password(password):
             break
 
-        
-        else:
-            print("Invalid password. Please try again.")
+        print("Invalid password. Please try again.")
 
     while True:
         email = input("Enter new email: ").strip()
@@ -53,6 +54,9 @@ def edit_trainer(user_repository):
 
         print("Invalid email. Please try again.")
 
+    print("Select the trainer status: ")
+    is_active = get_user_status()
+
     try:
         edit_user(
             old_username,
@@ -61,7 +65,8 @@ def edit_trainer(user_repository):
             password,
             email,
             "trainer",
-            user_repository
+            user_repository,
+            is_active=is_active
         )
 
         print("Trainer updated successfully!")

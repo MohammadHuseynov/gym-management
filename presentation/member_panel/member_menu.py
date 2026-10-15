@@ -12,12 +12,9 @@ def member_menu():
         print("4.Workout Plan")
         print("5.Return")
 
-        try:
-            user_choice = int(input("please enter a number choice: "))
+        user_choice = input("please enter a number choice: ")
 
-        except:
-            raise ValueError("please enter a number")
-
+    
         if user_choice == 1:
             view_subscription_status()
 
@@ -31,4 +28,4 @@ def member_menu():
             view_workout_plan()
 
         elif user_choice == 5:
-            pass
+            return

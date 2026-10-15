@@ -1,23 +1,32 @@
-def manage_report():
-    print("-" * 8)
-    print("1.Active User Count Report")
-    print("2.Active Trainer Count Report")
-    print("3.Active Courses Count Report")
-    print("4.Full Income Report")
+from presentation.manager_panel.reports.active_members_report import active_members
+from presentation.manager_panel.reports.active_trainers_report import active_trainers
+from presentation.manager_panel.reports.active_courses_report import active_courses
+from presentation.manager_panel.reports.income_report import income_report
 
-    try: 
-        user_choice = int(input("which action you want to do? "))
-    except:
-        raise ValueError("please enter a number")
 
-    if user_choice == 1:
-        print("a service logic for active user count")
-
-    elif user_choice == 2:
-        print("a service logic for active trainer count")
+def manage_report(user_repository, course_repository):
+    while True:
+        print("-" * 8)
+        print("1.Active User Count Report")
+        print("2.Active Trainer Count Report")
+        print("3.Active Courses Count Report")
+        print("4.Full Income Report")
     
-    elif user_choice == 3:
-        print("a service logic for active courses count")
-
-    elif user_choice == 4:
-        print("a service logic for full income")
+     
+        user_choice = input("which action you want to do? ")
+    
+    
+        if user_choice == "1":
+            active_members()
+    
+        elif user_choice == "2":
+            active_trainers()
+        
+        elif user_choice == "3":
+            active_courses()
+    
+        elif user_choice == "4":
+            income_report()
+    
+        else:
+            print("please enter valid number choice (1-4)")
