@@ -26,21 +26,24 @@ while choice_plan != "BACK":
                     remaining_days_for_user = user["user_subscription"][4] + remaining_days_months# (user_subscription+=remaining_days_months if user_name.subs != None else remaining_days)
                     pre_history = jdatetime.datetime.strptime(user["user_subscription"][2], "%Y/%m/%d %H:%M:%S")
                     ented_time_sub = get_end_time(pre_history, number_months)
-                    subscriptions = [subc, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), ented_time_sub.strftime("%Y/%m/%d %H:%M:%S"), 'active', remaining_days_for_user]
+                    traking_number = api_bank.generate_payment_id(price, user["information_card_user"][0])
+                    subscriptions = [traking_number, subc, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), ented_time_sub.strftime("%Y/%m/%d %H:%M:%S"), 'active', remaining_days_for_user]
                     user["user_subscription"] = subscriptions
-                    trx_resubscribe = (user["username"], "Resubscribe", price, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), tozih if tozih != "" else "None", api_bank.generate_payment_id(price, user["information_card_user"][0]), "success")
+                    trx_resubscribe = (user["username"], "Resubscribe", price, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), tozih if tozih != "" else "None", traking_number, "success")
                     translation_saved(trx_resubscribe)
                     break # back to panel
                 else:
-                    subscriptions = [subc, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), get_end_time(buy_time_subscription, number_months).strftime("%Y/%m/%d %H:%M:%S"), 'active', remaining_days_months]
+                    traking_number = api_bank.generate_payment_id(price, user["information_card_user"][0])
+                    subscriptions = [traking_number, subc, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), get_end_time(buy_time_subscription, number_months).strftime("%Y/%m/%d %H:%M:%S"), 'active', remaining_days_months]
                     user["user_subscription"] = subscriptions
-                    trx_buy = (user["username"], f"buy subscriptions {subc}", price, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), tozih if tozih != "" else "None", api_bank.generate_payment_id(price, user["information_card_user"][0]), "success")
+                    trx_buy = (user["username"], f"buy subscriptions {subc}", price, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), tozih if tozih != "" else "None", traking_number, "success")
                     translation_saved(trx_buy)
                     break # back to panel
             else:
-                subscriptions = [subc, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), get_end_time(buy_time_subscription, number_months).strftime("%Y/%m/%d %H:%M:%S"), 'active', remaining_days_months]
+                traking_number = api_bank.generate_payment_id(price, user["information_card_user"][0])
+                subscriptions = [traking_number, subc, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), get_end_time(buy_time_subscription, number_months).strftime("%Y/%m/%d %H:%M:%S"), 'active', remaining_days_months]
                 user["user_subscription"] = subscriptions
-                trx_buy = (user["username"], f"buy subscriptions {subc}", price, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), tozih if tozih != "" else "None", api_bank.generate_payment_id(price, user["information_card_user"][0]), "success")
+                trx_buy = (user["username"], f"buy subscriptions {subc}", price, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), tozih if tozih != "" else "None", traking_number, "success")
                 translation_saved(trx_buy)
                 break # back to panel
         else:
@@ -66,24 +69,27 @@ while choice_plan != "BACK":
             # number of days month
             if (user["user_subscription"] != None):
                 if (user["user_subscription"][-2] == "active"): # tamdid eshtrack 
+                    traking_number = api_bank.generate_payment_id(price, user["information_card_user"][0])
                     remaining_days_for_user = user["user_subscription"][4] + x_counter_days# (user_subscription+=remaining_days_months if user_name.subs != None else remaining_days)
                     pre_history = jdatetime.datetime.strptime(user["user_subscription"][2], "%Y/%m/%d %H:%M:%S")
                     ented_time_sub = get_end_time(pre_history, number_months)
-                    subscriptions = [subc, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), ented_time_sub.strftime("%Y/%m/%d %H:%M:%S"), 'active', remaining_days_for_user]
+                    subscriptions = [traking_number, subc, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), ented_time_sub.strftime("%Y/%m/%d %H:%M:%S"), 'active', remaining_days_for_user]
                     user["user_subscription"] = subscriptions
-                    trx_resubscribe = (user["username"], "Resubscribe", price, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), tozih if tozih != "" else "None", api_bank.generate_payment_id(price, user["information_card_user"][0]), "success")
+                    trx_resubscribe = (user["username"], "Resubscribe", price, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), tozih if tozih != "" else "None", traking_number, "success")
                     translation_saved(trx_resubscribe)
                     break # back to panel
                 else:
-                    subscriptions = [subc, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), get_end_time(buy_time_subscription, number_months).strftime("%Y/%m/%d %H:%M:%S"), 'active', x_counter_days]
+                    traking_number = api_bank.generate_payment_id(price, user["information_card_user"][0])
+                    subscriptions = [traking_number, subc, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), get_end_time(buy_time_subscription, number_months).strftime("%Y/%m/%d %H:%M:%S"), 'active', x_counter_days]
                     user["user_subscription"] = subscriptions
-                    trx_buy = (user["username"], f"buy subscriptions {subc}", price, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), tozih if tozih != "" else "None", api_bank.generate_payment_id(price, user["information_card_user"][0]), "success")
+                    trx_buy = (user["username"], f"buy subscriptions {subc}", price, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), tozih if tozih != "" else "None", traking_number, "success")
                     translation_saved(trx_buy)
                     break # back to panel
             else:
-                subscriptions = [subc, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), get_end_time(buy_time_subscription, number_months).strftime("%Y/%m/%d %H:%M:%S"), 'active', x_counter_days]
+                traking_number = api_bank.generate_payment_id(price, user["information_card_user"][0])
+                subscriptions = [traking_number, subc, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), get_end_time(buy_time_subscription, number_months).strftime("%Y/%m/%d %H:%M:%S"), 'active', x_counter_days]
                 user["user_subscription"] = subscriptions
-                trx_buy = (user["username"], f"buy subscriptions {subc}", price, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), tozih if tozih != "" else "None", api_bank.generate_payment_id(price, user["information_card_user"][0]), "success")
+                trx_buy = (user["username"], f"buy subscriptions {subc}", price, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), tozih if tozih != "" else "None", traking_number, "success")
                 translation_saved(trx_buy)
                 break # back to panel
         else:
@@ -109,24 +115,27 @@ while choice_plan != "BACK":
             # number of days month
             if (user["user_subscription"] != None):
                 if (user["user_subscription"][-2] == "active"): # tamdid eshtrack 
+                    traking_number = api_bank.generate_payment_id(price, user["information_card_user"][0])
                     remaining_days_for_user = user["user_subscription"][4] + x_counter_days# (user_subscription+=remaining_days_months if user_name.subs != None else remaining_days)
                     pre_history = jdatetime.datetime.strptime(user["user_subscription"][2], "%Y/%m/%d %H:%M:%S")
                     ented_time_sub = get_end_time(pre_history, number_months)
-                    subscriptions = [subc, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), ented_time_sub.strftime("%Y/%m/%d %H:%M:%S"), 'active', remaining_days_for_user]
+                    subscriptions = [traking_number, subc, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), ented_time_sub.strftime("%Y/%m/%d %H:%M:%S"), 'active', remaining_days_for_user]
                     user["user_subscription"] = subscriptions
-                    trx_resubscribe = (user["username"], "Resubscribe", price, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), tozih if tozih != "" else "None", api_bank.generate_payment_id(price, user["information_card_user"][0]), "success")
+                    trx_resubscribe = (user["username"], "Resubscribe", price, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), tozih if tozih != "" else "None", traking_number, "success")
                     translation_saved(trx_resubscribe)
                     break # back to panel
                 else:
-                    subscriptions = [subc, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), get_end_time(buy_time_subscription, number_months).strftime("%Y/%m/%d %H:%M:%S"), 'active', x_counter_days]
+                    traking_number = api_bank.generate_payment_id(price, user["information_card_user"][0])
+                    subscriptions = [traking_number, subc, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), get_end_time(buy_time_subscription, number_months).strftime("%Y/%m/%d %H:%M:%S"), 'active', x_counter_days]
                     user["user_subscription"] = subscriptions
-                    trx_buy = (user["username"], f"buy subscriptions {subc}", price, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), tozih if tozih != "" else "None", api_bank.generate_payment_id(price, user["information_card_user"][0]), "success")
+                    trx_buy = (user["username"], f"buy subscriptions {subc}", price, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), tozih if tozih != "" else "None", traking_number, "success")
                     translation_saved(trx_buy)
                     break # back to panel
             else:
-                subscriptions = [subc, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), get_end_time(buy_time_subscription, number_months).strftime("%Y/%m/%d %H:%M:%S"), 'active', x_counter_days]
+                traking_number = api_bank.generate_payment_id(price, user["information_card_user"][0])
+                subscriptions = [traking_number, subc, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), get_end_time(buy_time_subscription, number_months).strftime("%Y/%m/%d %H:%M:%S"), 'active', x_counter_days]
                 user["user_subscription"] = subscriptions
-                trx_buy = (user["username"], f"buy subscriptions {subc}", price, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), tozih if tozih != "" else "None", api_bank.generate_payment_id(price, user["information_card_user"][0]), "success")
+                trx_buy = (user["username"], f"buy subscriptions {subc}", price, buy_time_subscription.strftime("%Y/%m/%d %H:%M:%S"), tozih if tozih != "" else "None", traking_number, "success")
                 translation_saved(trx_buy)
                 break # back to panel
         else:
@@ -137,5 +146,4 @@ while choice_plan != "BACK":
     else:
         print('input invalid!! ')
         choice_plan = input("What is your choice? ")
-
 
