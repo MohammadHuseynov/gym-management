@@ -4,16 +4,16 @@ from presentation.manager_panel.courses.manager_courses import manage_courses
 from presentation.manager_panel.reports.manager_reports import manage_report
 
 def manager_menu():  
-
-    print('-' * 8)
-    print("1.Managing Users")
-    print("2.Managing Halls")
-    print("3.Managing Courses")
-    print("4.Managing Subscriptions")
-    print("5.View Reports")
-
-
     while True:
+
+        print('-' * 8)
+        print("1.Managing Users")
+        print("2.Managing Halls")
+        print("3.Managing Courses")
+        print("4.Managing Subscriptions")
+        print("5.View Reports")
+        print("6.Return")
+    
         try:
             manager_choice = int(input("Enter the number you want to do: "))
         except ValueError:
@@ -34,5 +34,8 @@ def manager_menu():
 
         elif manager_choice == 5:
             manage_report()
+
+        elif manager_choice == 6:
+            return
 
         
