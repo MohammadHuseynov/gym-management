@@ -1,4 +1,3 @@
-
 class WorkoutRepository:
     def __init__(self, file_path="data/workout_plans_data.txt"):
         self.file_path = file_path

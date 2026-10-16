@@ -3,7 +3,7 @@ from services.courses.get_courses import get_courses
 from services.workouts.add_exercise import create_workout_plan
 
 
-def workout_plan(trainer, user_repository, course_repository,workout_repository):
+def workout_plan(trainer, user_repository, course_repository, workout_repository):
     courses = get_courses(course_repository)
     trainer_courses = []
     exercises = []

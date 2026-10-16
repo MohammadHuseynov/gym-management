@@ -48,7 +48,7 @@ def main_menu():
             manager_menu(user_repository, hall_repository, course_repository)
 
         elif role == "trainer":
-            trainer_menu(user_repository, course_repository, workout_repository)
+            trainer_menu(role ,user_repository, course_repository, workout_repository)
 
         elif role == "member":
-            member_menu(user_repository, subscription_repository, course_repository, workout_repository)
+            member_menu(role ,user_repository, subscription_repository, course_repository, workout_repository)
