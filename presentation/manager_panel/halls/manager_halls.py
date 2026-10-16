@@ -1,28 +1,34 @@
-from presentation.manager_panel.halls.add_hall import add_hall
-from presentation.manager_panel.halls.edit_hall import edit_hall
+from presentation.manager_panel.halls.add_hall import manage_add_hall
+from presentation.manager_panel.halls.edit_hall import manage_edit_hall
 from presentation.manager_panel.halls.view_halls import view_halls
-from presentation.manager_panel.halls.activate_hall import activate_hall
+from presentation.manager_panel.halls.manager_halls_status import manage_hall_status
 
-def manage_halls():
+def manage_halls(hall_repository):
     print("-" * 8)
     print("1.Add Hall")
     print("2.Edit Hall")
-    print("3.View Halls")
-    print("4.Active\Deactive Hall")
+    print("3.Active or Deactive Hall")
+    print("4.View Halls")
+    print("5.Return")
 
-    try:
-        users_choice = int(input("What you want to do?: "))
-    except:
-        raise ValueError("please enter number choice")
+    
+    users_choice = input("What you want to do?: ")
+    
 
-    if users_choice == 1:
-        add_hall()
+    if users_choice == "1":
+        manage_add_hall(hall_repository)
 
-    elif users_choice == 2:
-        edit_hall()
+    elif users_choice == "2":
+        manage_edit_hall(hall_repository)
 
-    elif users_choice == 3:
-        view_halls()
+    elif users_choice == "3":
+        manage_hall_status(hall_repository)
 
-    elif users_choice == 4:
-        activate_hall()
+    elif users_choice == "4":
+        view_halls(hall_repository)
+
+    elif users_choice == "5":
+        return
+
+    else:
+        print("please enter correctly")

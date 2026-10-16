@@ -3,18 +3,23 @@ def pay_renew_subscription():
     print("1.One Month")
     print("2.Three Month")
     print("3.Six Month")
+    print("4.Return")
 
-    try:
-        user_choice = int(input("please enter your choice: "))
-    except:
-        raise ValueError("please enter a number")
+    
+    user_choice = input("please enter your choice: ")
 
 
-    if user_choice == 1:
+    if user_choice == "1":
         print("add 1 month if enough money")
 
-    elif user_choice == 2:
+    elif user_choice == "2":
         print("add 3 month if enough money")
 
-    elif user_choice == 3:
+    elif user_choice == "3":
         print("add 6 month if enough money")
+
+    elif user_choice == "4":
+        return
+
+    else:
+        print("please enter correctly")

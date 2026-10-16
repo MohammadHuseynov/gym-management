@@ -23,9 +23,9 @@ class Wallet:
 
 
 class Transaction:
-    def __init__(self, transaction_type, amount, date, description, tracking_number):
+    def __init__(self, transaction_type, price, date, description, tracking_number):
         self.transaction_type = transaction_type
-        self.amount = amount
+        self.price = price
         self.date = date
         self.description = description
         self.tracking_number = tracking_number
