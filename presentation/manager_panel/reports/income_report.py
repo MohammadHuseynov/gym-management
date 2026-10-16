@@ -1,2 +1,2 @@
 def income_report():
-    pass
+    print("Kheily pooldarim Ghamet nabashe")

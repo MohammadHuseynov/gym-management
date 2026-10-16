@@ -2,7 +2,7 @@ from presentation.manager_panel.users.manager_users_menu import manager_users
 from presentation.manager_panel.halls.manager_halls import manage_halls
 from presentation.manager_panel.courses.manager_courses import manage_courses
 from presentation.manager_panel.reports.manager_reports import manage_report
-from presentation.manager_panel.subscriptions.manage_subscriptions import manage_subscription
+from presentation.manager_panel.subscriptions.manage_subscription import manage_subscription
 
 
 def manager_menu(user_repository, hall_repository, course_repository):  
@@ -28,7 +28,7 @@ def manager_menu(user_repository, hall_repository, course_repository):
             manage_courses(course_repository,user_repository,hall_repository)
 
         elif manager_choice == "4":
-            manage_subscription()
+            manage_subscription(user_repository, subscription_repository)
 
         elif manager_choice == "5":
             manage_report(user_repository, course_repository)

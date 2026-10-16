@@ -5,17 +5,19 @@ from services.users.login_user import handle_login
 from infrastructure.user_repository import UserRepository
 from infrastructure.hall_repository import HallRepository
 from infrastructure.course_repository import CourseRepository
+from infrastructure.workout_repository import WorkoutRepository
+from infrastructure.subscription_repository import SubscriptionRepository
 from model.user import Member
 from model.user import Trainer
+
 
 
 def main_menu():
     user_repository = UserRepository()
     hall_repository = HallRepository()
     course_repository = CourseRepository()
-
-    member = Member()
-    trainer = Trainer()
+    workout_repository = WorkoutRepository()
+    subscription_repository = SubscriptionRepository()
 
     while True:
         print("-" * 8)
@@ -46,6 +48,13 @@ def main_menu():
         if role == "manager":
             manager_menu(user_repository, hall_repository, course_repository)
         elif role == "trainer":
-            trainer_menu(trainer, course_repository)
+            trainer = Trainer(
+                user["name"], user["username"], user["password"],
+                user["email"], user["role"]
+            )
+            trainer_menu(trainer, user_repository, course_repository, workout_repository)
         elif role == "member":
-            member_menu(member, user_repository, hall_repository, course_repository)
+            member = Member(
+                user["name"], user["username"], user["password"],
+                user["email"], user["role"]),
+            member_menu(member, user_repository, subscription_repository, course_repository, workout_repository)

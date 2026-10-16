@@ -9,6 +9,8 @@ class Course:
         self.capacity = capacity
         self.is_active = is_active
 
+
         self.enrolled_members = []
 
 #sport_type means yoga fitness bodybuilding and etc
+   

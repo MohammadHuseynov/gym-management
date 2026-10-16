@@ -1,11 +1,17 @@
 def handle_login(user_repository, expected_role):
     if expected_role == "manager":
+       
         username = input("Enter manager username (or 1 to go back): ").strip()
 
-        if username.lower() == "1":
-            return None
+        if username == "1":
+            return 
 
-        password = input("Enter manager password: ").strip()
+        password = input("Enter manager password (or 1 to go back): ").strip()
+
+
+        if username == "1":
+            return 
+
 
         if username == "Admin" and password == "1234":
             print("Welcome, Admin!")

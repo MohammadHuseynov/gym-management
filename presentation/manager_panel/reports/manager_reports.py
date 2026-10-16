@@ -18,13 +18,13 @@ def manage_report(user_repository, course_repository):
     
     
         if user_choice == "1":
-            active_members()
+            active_members(user_repository)
     
         elif user_choice == "2":
-            active_trainers()
+            active_trainers(user_repository)
         
         elif user_choice == "3":
-            active_courses()
+            active_courses(course_repository)
     
         elif user_choice == "4":
             income_report()

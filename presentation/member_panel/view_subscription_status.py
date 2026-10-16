@@ -4,8 +4,6 @@ def view_subscription_status(member, subscription_repository):
     username = member.username
     member_subscriptions = []
 
-
-
     for subscription in subscription_repository:
         if subscription["member_username"] == username:
             member_subscriptions.append(subscription)
@@ -20,7 +18,7 @@ def view_subscription_status(member, subscription_repository):
         print("Your Subscription Status")
         print("-" * 8)
         print(f"Type: {subscription["type"]}")
-        print(f"Amount: {subscription["amount"]}")
+        print(f"price: {subscription["price"]}")
         print(f"Start Date: {subscription["start_date"]}")
         print(f"End Date: {subscription["end_date"]}",)
 

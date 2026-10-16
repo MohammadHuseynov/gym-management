@@ -11,21 +11,19 @@ def manage_add_user(user_repository):
         print("2.Add Trainer")
         print("3.Return")
         
-        try:
-            users_choice = int(input("Which kind of user do you want to add? (1-2): "))
-        except ValueError:
-            print("Please enter a number.")
-            continue
 
-        if users_choice == 1:
+        users_choice = input("Which kind of user do you want to add? (1-2): ")
+        
+
+        if users_choice == "1":
             add_member(user_repository)
             return
 
-        elif users_choice == 2:
+        elif users_choice == "2":
             add_trainer(user_repository)
             return
         
-        elif users_choice == 3:
+        elif users_choice == "3":
             return
         
         else:

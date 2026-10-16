@@ -4,12 +4,23 @@ from services.validations.validation import (validate_email, validate_password,g
 
 
 def add_member(user_repository):
-    name = input("Enter member name: ").strip()
-    username = input("Enter username: ").strip()
+    
+    name = input("Enter member name(enter 1 to go back): ").strip()
+
+    if name == "1":
+        return 
+    
+    username = input("Enter username(enter 1 to go back): ").strip()
+
+    if username == "1":
+        return None
 
     while True:
-        password = input("Enter password: ")
+        password = input("Enter password (enter 1 to go back): ")
 
+        if password == "1":
+            return None
+        
         if validate_password(password):
             break
 

@@ -1,12 +1,23 @@
-def manage_course():
-    
-    print("-" * 8)
-    print("show available courses (only those active and still has room) and and show it to user with number 1 class etc and when user wants to enroll check if user has subscriptions left ")
-
-    print("if successful -->  transaction id, date registered, active registeration")
-
-    print("1.View Active Courses")
+from presentation.member_panel.courses.view_courses import view_courses
 
 
-def quit_course():
-    print("DO NOT DELETE LOGS ONLY DEACTIVATE THE COURSE FOR MEMBER")
+def manage_course(course_repository=None, member=None):
+    if course_repository is None:
+        print("Course information is unavailable.")
+        return
+
+    while True:
+        print("-" * 8)
+        print("1.View Active Courses")
+        print("2.Return")
+
+        choice = input("Choose an option (1-2): ").strip()
+
+        if choice == "1":
+            view_courses(course_repository)
+        elif choice == "2":
+            return
+        else:
+            print("Please enter 1 or 2.")
+
+
