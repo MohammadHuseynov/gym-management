@@ -1,6 +1,3 @@
-
-
-
 def manage_subscription(user_repository, subscription_repository):
     while True:
         print("-" * 8)

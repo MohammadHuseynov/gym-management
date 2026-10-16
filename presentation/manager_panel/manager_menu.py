@@ -7,7 +7,6 @@ from presentation.manager_panel.subscriptions.manage_subscription import manage_
 
 def manager_menu(user_repository, hall_repository, course_repository):  
     while True:
-
         print('-' * 8)
         print("1.Managing Users")
         print("2.Managing Halls")
@@ -28,7 +27,7 @@ def manager_menu(user_repository, hall_repository, course_repository):
             manage_courses(course_repository,user_repository,hall_repository)
 
         elif manager_choice == "4":
-            manage_subscription(user_repository, subscription_repository)
+            manage_subscription(user_repository)
 
         elif manager_choice == "5":
             manage_report(user_repository, course_repository)

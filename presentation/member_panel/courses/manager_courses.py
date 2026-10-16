@@ -1,7 +1,6 @@
 from presentation.member_panel.courses.view_courses import view_courses
 
-
-def manage_course(course_repository=None, member=None):
+def manage_course(course_repository, member):
     if course_repository is None:
         print("Course information is unavailable.")
         return

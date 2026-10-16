@@ -3,6 +3,7 @@ from services.validations.validation import validate_email, validate_password, g
 
 
 def edit_member(user_repository):
+    
     old_username = input("Enter the username of the member to edit (or 1 to go back): ").strip()
 
     if old_username == "1":

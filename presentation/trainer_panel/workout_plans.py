@@ -4,9 +4,9 @@ from services.workouts.add_exercise import create_workout_plan
 
 
 def workout_plan(trainer, user_repository, course_repository,workout_repository):
-
     courses = get_courses(course_repository)
     trainer_courses = []
+    exercises = []
 
     for course in courses:
         if course["trainer"].lower() == trainer.name.lower():
@@ -14,7 +14,6 @@ def workout_plan(trainer, user_repository, course_repository,workout_repository)
 
     if not trainer_courses:
         print("You don't have any assigned courses.")
-        input("Press Enter to return...")
         return
 
     while True:
@@ -48,7 +47,6 @@ def workout_plan(trainer, user_repository, course_repository,workout_repository)
             print("Username cannot be empty")
             continue
 
-        exercises = []
 
         while True:
             print("Enter Exercise Details")
@@ -93,9 +91,9 @@ def workout_plan(trainer, user_repository, course_repository,workout_repository)
             create_workout_plan(trainer,member_username,selected_course["title"],exercises,user_repository,
                 course_repository,workout_repository)
 
-            print("\nWorkout plan saved successfully")
+            print("Workout plan saved successfully")
 
         except ValueError as error:
             print(f"Error: {error}")
 
-        input("Press Enter to return to your courses")
+

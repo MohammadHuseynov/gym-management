@@ -1,4 +1,3 @@
-from presentation import main_menu
 from presentation.trainer_panel.workout_plans import workout_plan 
 from presentation.trainer_panel.view_courses import view_course
 
@@ -20,7 +19,7 @@ def trainer_menu(trainer, user_repository, course_repository,workout_repository)
             workout_plan(trainer,user_repository,course_repository,workout_repository)
 
         elif trainer_choice == "3":
-            return main_menu.main_menu()
+            return 
         
         else: 
             print("please enter correctly")

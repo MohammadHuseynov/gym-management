@@ -2,13 +2,12 @@ from presentation.manager_panel.manager_menu import manager_menu
 from presentation.trainer_panel.trainer_menu import trainer_menu
 from presentation.member_panel.member_menu import member_menu
 from services.users.login_user import handle_login
+
 from infrastructure.user_repository import UserRepository
 from infrastructure.hall_repository import HallRepository
 from infrastructure.course_repository import CourseRepository
 from infrastructure.workout_repository import WorkoutRepository
 from infrastructure.subscription_repository import SubscriptionRepository
-from model.user import Member
-from model.user import Trainer
 
 
 
@@ -47,14 +46,9 @@ def main_menu():
 
         if role == "manager":
             manager_menu(user_repository, hall_repository, course_repository)
+
         elif role == "trainer":
-            trainer = Trainer(
-                user["name"], user["username"], user["password"],
-                user["email"], user["role"]
-            )
-            trainer_menu(trainer, user_repository, course_repository, workout_repository)
+            trainer_menu(user_repository, course_repository, workout_repository)
+
         elif role == "member":
-            member = Member(
-                user["name"], user["username"], user["password"],
-                user["email"], user["role"]),
-            member_menu(member, user_repository, subscription_repository, course_repository, workout_repository)
+            member_menu(user_repository, subscription_repository, course_repository, workout_repository)

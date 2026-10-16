@@ -1,4 +1,3 @@
-
 class CourseRepository:
     def __init__(self, file_path="data/courses_data.txt"):
         self.file_path = file_path

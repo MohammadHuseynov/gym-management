@@ -11,10 +11,7 @@ def manager_users(user_repository):
     print("4.View All Users")
     print("5.Return")
 
-    try:
-        users_choice = input("the user type: ")
-    except:
-        raise ValueError("please enter number choice")
+    users_choice = input("the user type: ")
     
     if users_choice == "1":
         manage_add_user(user_repository)

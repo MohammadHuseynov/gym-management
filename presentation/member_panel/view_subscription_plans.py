@@ -1,6 +1,5 @@
 from services.subscriptions.get_subscription import get_subscription
 
-
 def view_subscription_plans(subscription_repository):
     plans = get_subscription(subscription_repository)
     if not plans:

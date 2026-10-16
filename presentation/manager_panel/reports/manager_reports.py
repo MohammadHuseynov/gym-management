@@ -7,7 +7,7 @@ from presentation.manager_panel.reports.income_report import income_report
 def manage_report(user_repository, course_repository):
     while True:
         print("-" * 8)
-        print("1.Active User Count Report")
+        print("1.Active Member Count Report")
         print("2.Active Trainer Count Report")
         print("3.Active Courses Count Report")
         print("4.Full Income Report")

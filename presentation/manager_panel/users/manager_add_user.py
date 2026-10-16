@@ -1,4 +1,3 @@
-from infrastructure.user_repository import UserRepository
 from presentation.manager_panel.users.members.add_member import add_member
 from presentation.manager_panel.users.trainers.add_trainer import add_trainer
 
