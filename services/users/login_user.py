@@ -1,3 +1,5 @@
+admin_username = None
+admin_password = None
 def handle_login(user_repository, expected_role):
     if expected_role == "manager":
        
@@ -9,12 +11,28 @@ def handle_login(user_repository, expected_role):
         password = input("Enter manager password (or 1 to go back): ").strip()
 
 
-        if username == "1":
+        if password == "1":
             return 
 
+        with open("data/seed_data.txt", "r", encoding="utf-8") as file:
+            lines = file.readlines()
 
-        if username == "Admin" and password == "1234":
-            print("Welcome, Admin!")
+        for line in lines:
+            line = line.strip()
+            if not line or "=" not in line:
+                continue
+
+            key, value = line.split("=")
+            key = key.strip()
+            value = value.strip()
+
+            if key == "username":
+                admin_username = value
+            elif key == "password":
+                admin_password = value
+
+        if username == admin_username and password == admin_password:
+            print(f"Welcome, {admin_username}!")
             return {"name": "Admin", "role": "manager"}
 
         print("Incorrect username or password.")
